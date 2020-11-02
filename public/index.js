@@ -20,25 +20,34 @@ document.querySelectorAll(".operator").forEach(operator => {
     })
 })
 
-// Showing result after hit Equal button
-equalButton.addEventListener('click', (e) => {
+
+// Result
+equalButton.addEventListener("click", () => {
     try{
-      if(current.textContent === "NaN") {
+        // Remove if its not a Number
+        if(current.textContent === "NaN") {
             ul.firstChild.remove();
             current.innerText = '';
         }
-        else {
-            current.innerText = easyToSee(eval(previous.textContent));
-            showOnline();
-            previous.innerText = '';
-        }
+        // display result for current user
+        current.innerText = easyToSee(eval(previous.textContent));
+        // Pass value to server
+        socket.emit("user", {
+            previousOnline: previous.textContent,
+            currentOnline : easyToSee(eval(previous.textContent)),
+        })
+    }catch(e) {
+        return null
     }
-    // Return null for unexpected error
-    catch(err) {
-        return
-    }
-        
 })
+
+// Display data from other user
+socket.on("user",(data) => {
+    ul.innerHTML += `<li>${data.previousOnline} = ${data.currentOnline}</li>`
+    descendingValue();
+    previous.innerText = '';
+  }
+)
 
 // Reset
 resetButton.addEventListener('click', () => {
@@ -60,11 +69,15 @@ const easyToSee = (string) => {
     return toNumber.toLocaleString(0)
 }
 
-// Function to show online result from user
-const showOnline = () => {
-    ul.innerHTML += `<li>${previous.textContent} = ${current.textContent}</li>`;
+// Function to make list descending
+const descendingValue = () => {
     const li = document.querySelectorAll("li");
     // insert the element to top and remove the last element
     ul.insertBefore(ul.lastElementChild, ul.firstChild);
       if(li.length > 10) ul.removeChild(ul.lastElementChild)
 }
+
+
+
+
+

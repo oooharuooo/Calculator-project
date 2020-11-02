@@ -13,5 +13,8 @@ const io = socket(server);
 
 // Find the callback from user
 io.on("connection", (socket) => {
-    console.log("socket is connected",socket.id);
+    // Use data from user and pass it back
+    socket.on("user",(data) => {
+        io.sockets.emit("user",data)
+    })
 })
