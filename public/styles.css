@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+  font-family: 'Itim', cursive;
+  font-size: large;
+}
+
+.main-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.main-container .online-container {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  place-self: center;
+}
+
+.main-container .online-container ul {
+  list-style-type: none;
+}
+
+.main-container .calculator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.main-container .calculator .result-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 90%;
+  border: 1px solid #292323;
+  background-color: #ad8183;
+}
+
+.main-container .calculator .result-container .flex-end-padding {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding-right: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.main-container .calculator .result-container .previous-result {
+  height: 1rem;
+}
+
+.main-container .calculator .result-container .current-result {
+  height: 3rem;
+  font-size: 2.3rem;
+}
+
+.main-container .calculator .input-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+  height: 50%;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.main-container .calculator .input-container button {
+  background-color: #f3e8e8;
+  border: 1px solid whitesmoke;
+  font-family: inherit;
+  font-size: larger;
+}
+
+.main-container .calculator .input-container button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.main-container .calculator .input-container .row-two {
+  -ms-grid-row: span 2;
+      grid-row-start: span 2;
+}
+
+.main-container .calculator .input-container .column-two {
+  -ms-grid-column: span 2;
+      grid-column-start: span 2;
+}
+
+@media (min-width: 768px) {
+  .online-container {
+    font-size: 3rem;
+  }
+  .online-container li {
+    border-bottom: 1px solid whitesmoke;
+  }
+  .result-container {
+    height: 5rem;
+  }
+  .result-container, .input-container {
+    width: 50% !important;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

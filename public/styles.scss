@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    font-family: 'Itim', cursive;
+    font-size: large;
+}
+
+.main-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    .online-container {
+        align-self: center;
+        place-self: center;
+        ul {
+            list-style-type: none
+        }
+    }
+
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+
+        .result-container {
+            display:flex;
+            flex-direction: column;
+            align-self: center;
+            width: 90%;
+            border: 1px solid #292323;
+            background-color: #ad8183;
+
+            .flex-end-padding {
+                align-self: flex-end;
+                padding-right: 1rem;
+                overflow-wrap: anywhere;
+            }
+            .previous-result {
+                height: 1rem;
+            }
+            .current-result {
+                height: 3rem;
+                font-size: 2.3rem;
+            }
+        }
+
+        .input-container {
+            display: grid;
+            grid-template-columns:repeat(4,1fr);
+            width: 90%;
+            height: 50%;
+            align-self: center;
+
+            button {
+                background-color: #f3e8e8;
+                border: 1px solid whitesmoke;
+                font-family: inherit;
+                font-size: larger;
+            &:hover {
+                opacity: 0.8;
+                cursor: pointer;
+            }
+            }
+            .row-two {
+                grid-row-start: span 2;
+            }
+            .column-two {
+                grid-column-start: span 2;
+            }
+        }
+    } 
+}
+
+@media (min-width:768px) {
+    .online-container {
+        font-size: 3rem;
+        li {
+            border-bottom: 1px solid whitesmoke;
+        }
+    }
+    .result-container {
+        height:5rem;
+    }
+    .result-container, .input-container {
+        width: 50% !important ;
+    }
+}

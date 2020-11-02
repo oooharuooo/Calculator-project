@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+       
+        <div class= "calculator">
+            <div class="result-container">
+                <div class="previous-result flex-end-padding"></div>
+                <div class="current-result flex-end-padding"></div>
+            </div>
+
+            <div class="input-container">
+                <button class="reset">C</button>
+                <button class="operator">*</button>
+                <button class="operator">/</button>
+                <button class="delete">⌫</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="operator">+</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="operator">-</button>
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="equal row-two">=</button>
+                <button class="number column-two">0</button>
+                <button class="number">.</button>
+            </div>
+        </div>
+
+        <div class ="online-container">
+            <div class="online-result">
+                <ul>
+                    <!-- <li>fdfd</li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src = "index.js"></script>
+</body>
+</html>
