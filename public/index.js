@@ -24,28 +24,31 @@ document.querySelectorAll(".operator").forEach(operator => {
 // Result
 equalButton.addEventListener("click", () => {
     try{
-        // Remove if its not a Number
-        if(current.textContent === "NaN") {
-            ul.firstChild.remove();
-            current.innerText = '';
-        }
         // display result for current user
-        current.innerText = easyToSee(eval(previous.textContent));
+        current.innerText = easyToRead(eval(previous.textContent));
         // Pass value to server
         socket.emit("user", {
             previousOnline: previous.textContent,
-            currentOnline : easyToSee(eval(previous.textContent)),
+            currentOnline : easyToRead(eval(previous.textContent)),
         })
     }catch(e) {
         return null
     }
 })
 
-// Display data from other user
+// Display result from other user
 socket.on("user",(data) => {
-    ul.innerHTML += `<li>${data.previousOnline} = ${data.currentOnline}</li>`
-    descendingValue();
-    previous.innerText = '';
+    if(current.textContent !== "NaN") {
+        ul.innerHTML += `<li>${data.previousOnline} = ${data.currentOnline}</li>`
+        descendingValue();
+        previous.innerText = '';
+    }
+    // Disable if value is NaN
+    else {
+        current.innerText = "";
+    }
+    
+   
   }
 )
 
@@ -64,7 +67,7 @@ deleteButton.addEventListener('click',() => {
 
 
 // Function to convert number with comma after 4 digits 
-const easyToSee = (string) => {
+const easyToRead = (string) => {
     const toNumber = Number(string);
     return toNumber.toLocaleString(0)
 }
