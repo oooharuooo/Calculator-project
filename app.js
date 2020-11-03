@@ -3,7 +3,8 @@ const socket = require('socket.io');
 
 // App setup
 const app = express();
-const server = app.listen();
+const server = app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
 
 // Static files
 app.use(express.static('public'));
