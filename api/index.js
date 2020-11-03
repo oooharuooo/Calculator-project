@@ -17,4 +17,4 @@ io.on("connection", (socket) => {
     socket.on("user",(data) => {
         io.sockets.emit("user",data)
     })
-})
+}) 
