@@ -6,7 +6,7 @@ const equalButton = document.querySelector(".equal");
 const ul = document.querySelector(".online-result ul");
 
 // Socket back-end variables
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect("https://calculator-project-22itk5m7x.vercel.app:3000");
 
 // Create number button
 document.querySelectorAll(".number").forEach(num => {
