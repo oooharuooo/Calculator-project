@@ -25,12 +25,15 @@ document.querySelectorAll(".operator").forEach(operator => {
 equalButton.addEventListener("click", () => {
     try{
         // display result for current user
-        current.innerText = easyToRead(eval(previous.textContent));
-        // Pass value to server
-        socket.emit("user", {
-            previousOnline: previous.textContent,
-            currentOnline : easyToRead(eval(previous.textContent)),
-        })
+        const currentResult = easyToRead(eval(previous.textContent));
+        if(!isNaN(currentResult)){
+            current.innerText = currentResult;
+            // Pass value to server
+            socket.emit("user", {
+                previousOnline: previous.textContent,
+                currentOnline : currentResult,
+            })
+        }
     }catch(e) {
         return null
     }
@@ -38,17 +41,9 @@ equalButton.addEventListener("click", () => {
 
 // Display result from other user
 socket.on("user",(data) => {
-    if(current.textContent !== "NaN") {
-        ul.innerHTML += `<li>${data.previousOnline} = ${data.currentOnline}</li>`
-        descendingValue();
-        previous.innerText = '';
-    }
-    // Disable if value is NaN
-    else {
-        current.innerText = "";
-    }
-    
-   
+    ul.innerHTML += `<li>${data.previousOnline} = ${data.currentOnline}</li>`
+    descendingValue();
+    previous.innerText = '';
   }
 )
 
